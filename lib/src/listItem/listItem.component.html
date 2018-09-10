@@ -1,0 +1,49 @@
+<GridLayout class="background-primary-three" columns="*" rows="auto,*,auto">
+    <DockLayout col="0" row="0" class="background-primary p-4">
+        <Label *ngFor="let header of properties.headers; let i = index" [width]="header.width" [text]="header.text"></Label>
+    </DockLayout>
+    <ListView id="activeList" col="0" row="1" [items]="itemsList" class="list-group background-white">
+        <ng-template let-item="item" let-i="index">
+            <StackLayout class="p-12" [class.highlight]="item.Selected" (tap)="selectItem(i)" (longPress)="onLongPress(i)">
+                <DockLayout>
+                    <Label *ngFor="let field of properties.fields; let i2 = index" [width]="field.width"
+                        verticalAlignment="center" [text]="item[field.text]" class="list-group-item-heading"  [class.text-right]="isNumber(item[field.text])"></Label>
+                </DockLayout>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+    <GridLayout *ngIf="properties.options" col="0" row="2" class="p-4" columns="*, *, *, *" rows="*">
+        <StackLayout col="0">
+            <StackLayout [visibility]="normalState">
+                <ng-content select="[normalButton1]"></ng-content>
+            </StackLayout>
+            <StackLayout [visibility]="selectingState">
+                <ng-content select="[selectingButton1]"></ng-content>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout col="1">
+            <StackLayout [visibility]="normalState">
+                <ng-content select="[normalButton2]"></ng-content>
+            </StackLayout>
+            <StackLayout [visibility]="selectingState">
+                <ng-content select="[selectingButton2]"></ng-content>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout col="2">
+            <StackLayout [visibility]="normalState">
+                <ng-content select="[normalButton3]"></ng-content>
+            </StackLayout>
+            <StackLayout [visibility]="selectingState">
+                <ng-content select="[selectingButton3]"></ng-content>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout col="3">
+            <StackLayout [visibility]="normalState">
+                <ng-content select="[normalButton4]"></ng-content>
+            </StackLayout>
+            <StackLayout [visibility]="selectingState">
+                <ng-content select="[selectingButton4]"></ng-content>
+            </StackLayout>
+        </StackLayout>
+    </GridLayout>
+</GridLayout>

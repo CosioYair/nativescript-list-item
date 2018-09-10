@@ -1,0 +1,19 @@
+{
+  "name": "nativescript-list-item",
+  "version": "1.0.0",
+  "repository": "https://github.com/CosioYair/nativescript-list-item",
+  "author": "Yair Osvaldo Cosio Escoto <ycosio1310@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "@angular/core": "~6.0.6",
+    "@angular/common": "~6.0.6"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "lib": {
+      "entryFile": "src/public_api.ts"
+    },
+    "dest": "../dist"
+  }
+}
